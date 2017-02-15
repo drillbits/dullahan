@@ -1,0 +1,11 @@
+{
+  "name": "dullahan",
+  "version": "0.0.1",
+  "description": "Google Drive streaming tool.",
+  "repository": "ssh://git@github.com/drillbits/dullahan",
+  "author": "drillbits <neji@drillbits.jp>",
+  "license": "Apache-2.0",
+  "bin": {
+    "dullahan": "./bin/dullahan"
+  }
+}
