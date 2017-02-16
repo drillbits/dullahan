@@ -16,4 +16,4 @@ install:
   - yarn
 
 script:
-  - num run test
+  - npm run test
