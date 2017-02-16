@@ -1,6 +1,15 @@
 # dullahan
 
+[![Build Status][travis-badge]][travis-badge-url]
+[![npm][npm-badge]][npm-badge-url]
+
 `dullahan` supports streaming or downloading encoded videos on Google Drive with [nightmare](https://github.com/segmentio/nightmare).
+
+## Installation
+
+```bash
+$ npm install -g dullahan
+```
 
 ## Usage
 
@@ -27,3 +36,8 @@ $ dullahan download -e EMAIL -p PASSWORD -f FILE_ID [-o OUTFILE] [--show]
 ## License
 
 Apache 2.0
+
+[travis-badge]: https://travis-ci.org/drillbits/dullahan.svg?branch=master
+[travis-badge-url]: https://travis-ci.org/drillbits/dullahan
+[npm-badge]: https://img.shields.io/npm/v/dullahan.svg
+[npm-badge-url]: https://www.npmjs.com/package/dullahan
