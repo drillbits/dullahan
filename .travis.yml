@@ -1,0 +1,19 @@
+sudo: false
+
+language: node_js
+
+node_js:
+  - 'stable'
+  - 'lts/*'
+
+cache: yarn
+
+before_install:
+  - npm install -g yarn
+  - yarn --version
+
+install:
+  - yarn
+
+script:
+  - num run test
