@@ -15,7 +15,7 @@ addons:
 cache: yarn
 
 before_install:
-  - npm install -g yarn
+  - npm install -g yarn@v0.22.0
   - yarn --version
 
 install:
