@@ -18,6 +18,26 @@ const path = require('path');
 const test = require('ava');
 const pify = require('pify');
 const execFile = require('child_process').execFile;
+const Nightmare = require('nightmare');
+
+const hijack = require('hijack');
+
+test('cookie', async t => {
+    const nightmare = Nightmare({
+        switches: {
+            'ignore-certificate-errors': true
+        },
+        show: false
+    });
+    const cookies = await hijack.getCookie(
+        nightmare,
+        process.env.DULLAHAN_TEST_EMAIL,
+        process.env.DULLAHAN_TEST_PASSWORD,
+        '0B7rtUHJTGP6DbGc5SmZNV19fdzQ',
+        5000
+    );
+    t.truthy(cookies, 'session has a cookie');
+});
 
 test('session', async t => {
     let stdout;
@@ -27,6 +47,7 @@ test('session', async t => {
             '-e', process.env.DULLAHAN_TEST_EMAIL,
             '-p', process.env.DULLAHAN_TEST_PASSWORD,
             '-f', '0B7rtUHJTGP6DbGc5SmZNV19fdzQ',
+            '-w', 10000,
         ]);
     } catch (err) {
         // err includes password, etc.
@@ -58,6 +79,7 @@ test('download', async t => {
             '-p', process.env.DULLAHAN_TEST_PASSWORD,
             '-f', '0B7rtUHJTGP6DbGc5SmZNV19fdzQ',
             '-o', output,
+            '-w', 10000,
         ]);
     } catch (err) {
         // err includes password, etc.
