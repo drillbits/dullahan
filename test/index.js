@@ -18,6 +18,26 @@ const path = require('path');
 const test = require('ava');
 const pify = require('pify');
 const execFile = require('child_process').execFile;
+const Nightmare = require('nightmare');
+
+const hijack = require('hijack');
+
+test('cookie', async t => {
+    const nightmare = Nightmare({
+        switches: {
+            'ignore-certificate-errors': true
+        },
+        show: false
+    });
+    const cookies = await hijack.getCookie(
+        nightmare,
+        process.env.DULLAHAN_TEST_EMAIL,
+        process.env.DULLAHAN_TEST_PASSWORD,
+        '0B7rtUHJTGP6DbGc5SmZNV19fdzQ',
+        5000
+    );
+    t.truthy(cookies, 'session has a cookie');
+});
 
 test('session', async t => {
     let stdout;
