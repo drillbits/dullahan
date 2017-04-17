@@ -47,6 +47,7 @@ test('session', async t => {
             '-e', process.env.DULLAHAN_TEST_EMAIL,
             '-p', process.env.DULLAHAN_TEST_PASSWORD,
             '-f', '0B7rtUHJTGP6DbGc5SmZNV19fdzQ',
+            '-w', 10000,
         ]);
     } catch (err) {
         // err includes password, etc.
@@ -78,6 +79,7 @@ test('download', async t => {
             '-p', process.env.DULLAHAN_TEST_PASSWORD,
             '-f', '0B7rtUHJTGP6DbGc5SmZNV19fdzQ',
             '-o', output,
+            '-w', 10000,
         ]);
     } catch (err) {
         // err includes password, etc.
