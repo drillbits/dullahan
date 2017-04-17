@@ -20,12 +20,21 @@ const pify = require('pify');
 const execFile = require('child_process').execFile;
 
 test('session', async t => {
-    const stdout = await pify(execFile)('./bin/dullahan', [
-        'session',
-        '-e', process.env.DULLAHAN_TEST_EMAIL,
-        '-p', process.env.DULLAHAN_TEST_PASSWORD,
-        '-f', '0B7rtUHJTGP6DbGc5SmZNV19fdzQ',
-    ]);
+    let stdout;
+    try {
+        stdout = await pify(execFile)('./bin/dullahan', [
+            'session',
+            '-e', process.env.DULLAHAN_TEST_EMAIL,
+            '-p', process.env.DULLAHAN_TEST_PASSWORD,
+            '-f', '0B7rtUHJTGP6DbGc5SmZNV19fdzQ',
+        ]);
+    } catch (err) {
+        // err includes password, etc.
+        let errMsg = (err + '')
+            .replace(new RegExp(process.env.DULLAHAN_TEST_EMAIL, 'g'), '********')
+            .replace(new RegExp(process.env.DULLAHAN_TEST_PASSWORD, 'g'), '********');
+        t.fail(errMsg);
+    }
     let session;
     try {
         session = JSON.parse(stdout);
@@ -41,13 +50,22 @@ test('session', async t => {
 
 test('download', async t => {
     const output = path.join(path.resolve(''), 'test.mp4');
-    const stdout = await pify(execFile)('./bin/dullahan', [
-        'download',
-        '-e', process.env.DULLAHAN_TEST_EMAIL,
-        '-p', process.env.DULLAHAN_TEST_PASSWORD,
-        '-f', '0B7rtUHJTGP6DbGc5SmZNV19fdzQ',
-        '-o', output,
-    ]);
+    let stdout;
+    try {
+        stdout = await pify(execFile)('./bin/dullahan', [
+            'download',
+            '-e', process.env.DULLAHAN_TEST_EMAIL,
+            '-p', process.env.DULLAHAN_TEST_PASSWORD,
+            '-f', '0B7rtUHJTGP6DbGc5SmZNV19fdzQ',
+            '-o', output,
+        ]);
+    } catch (err) {
+        // err includes password, etc.
+        let errMsg = (err + '')
+            .replace(new RegExp(process.env.DULLAHAN_TEST_EMAIL, 'g'), '********')
+            .replace(new RegExp(process.env.DULLAHAN_TEST_PASSWORD, 'g'), '********');
+        t.fail(errMsg);
+    }
 
     let stat;
     try {
