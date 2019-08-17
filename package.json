@@ -12,12 +12,12 @@
     "test": "env NODE_PATH=./lib ava"
   },
   "dependencies": {
-    "nightmare": "^2.9.1",
+    "nightmare": "^3.0.2",
     "vo": "^4.0.2",
-    "yargs": "^6.6.0"
+    "yargs": "^13.3.0"
   },
   "devDependencies": {
-    "ava": "^0.18.1",
-    "pify": "^2.3.0"
+    "ava": "^2.2.0",
+    "pify": "^4.0.1"
   }
 }
