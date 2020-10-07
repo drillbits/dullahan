@@ -1,10 +1,17 @@
 {
   "name": "dullahan",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "description": "Google Drive streaming tool.",
-  "repository": "ssh://git@github.com/drillbits/dullahan",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/drillbits/dullahan.git"
+  },
   "author": "drillbits <neji@drillbits.jp>",
   "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/drillbits/dullahan/issues"
+  },
+  "homepage": "https://github.com/drillbits/dullahan#readme",
   "bin": {
     "dullahan": "./bin/dullahan"
   },
@@ -12,12 +19,11 @@
     "test": "env NODE_PATH=./lib ava"
   },
   "dependencies": {
-    "nightmare": "^3.0.2",
-    "vo": "^4.0.2",
-    "yargs": "^13.3.0"
+    "puppeteer": "^5.3.1",
+    "yargs": "^16.0.3"
   },
   "devDependencies": {
-    "ava": "^2.2.0",
-    "pify": "^4.0.1"
+    "ava": "^3.13.0",
+    "pify": "^5.0.0"
   }
 }

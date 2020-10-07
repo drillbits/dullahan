@@ -3,8 +3,8 @@ sudo: false
 language: node_js
 
 node_js:
-  - 'stable'
-  - 'lts/*'
+  - "stable"
+  - "lts/*"
 
 addons:
   apt:
@@ -12,18 +12,10 @@ addons:
       # For electron
       - xvfb
 
-cache: yarn
-
-before_install:
-  - npm install -g yarn@v0.27.5
-  - yarn --version
-
 install:
   # For electron
   - export DISPLAY=':99.0'
   - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-
-  - yarn
 
 script:
   - npm run test

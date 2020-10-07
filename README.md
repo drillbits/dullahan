@@ -3,7 +3,7 @@
 [![Build Status][travis-badge]][travis-badge-url]
 [![npm][npm-badge]][npm-badge-url]
 
-`dullahan` supports streaming or downloading encoded videos on Google Drive with [nightmare](https://github.com/segmentio/nightmare).
+`dullahan` supports streaming or downloading encoded videos on Google Drive with [puppeteer](https://pptr.dev/).
 
 ## Installation
 
@@ -22,7 +22,7 @@ $ dullahan help
 Output cookie and stream map to stdout as JSON format.
 
 ```bash
-$ dullahan session -e EMAIL -p PASSWORD -f FILE_ID [--show]
+$ dullahan session -e EMAIL -p PASSWORD -f FILE_ID [--headless]
 {"cookie":{"name":"DRIVE_STREAM","value":"xxx","domain":".drive.google.com","hostOnly":false,"path":"/","secure":true,"httpOnly":true,"session":true},"
 stream_map":{"18":"https://..."}
 ```
@@ -30,7 +30,7 @@ stream_map":{"18":"https://..."}
 **Download the encoded video**
 
 ```bash
-$ dullahan download -e EMAIL -p PASSWORD -f FILE_ID [-o OUTFILE] [--show]
+$ dullahan download -e EMAIL -p PASSWORD -f FILE_ID [-o OUTFILE] [--headless]
 ```
 
 ## License
