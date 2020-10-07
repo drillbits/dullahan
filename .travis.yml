@@ -1,0 +1,25 @@
+sudo: false
+
+language: node_js
+
+node_js:
+  - "stable"
+  - "lts/*"
+
+addons:
+  apt:
+    packages:
+      # For electron
+      - xvfb
+
+install:
+  # For electron
+  - export DISPLAY=':99.0'
+  - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+
+script:
+  - npm run test
+
+notifications:
+  slack:
+    secure: MH2omMwxRE7D05bNPVIzseTdxBflVqXQg8vhjl/dBn2wC8GbQtNOWcM3M5GfaxmcpiqP1TTZbAwYNC60hkHr8h2ki3bCfoL6SfTR9zfr4LSr0YG+xxtw9dmeRTHRvkbPvIAoNJgHsp+S2JkY9r8EUn0UhUhcWQ/2eSV9ETeZeitidek+iFmWdNB9oev8echEKmtT1lDwGErD20rR0M7D8Y5zFVZURdoQa44V446Hied89FfAPBhFx3HLKVo/3N2PVemUDwywA1Nxpl2j5IBNsQZhQ12Q//RirxWxVTP0tbIYp+o3RfpczSk+kFcxeGZc1SJBFDCRcn7pqVmFhLd606VRM+cd9eU/PmhRZ5djGzClmV9aNFL8HbPWQjIT6lMb5YzQKpb2bAz3k8dOEQ5PQiLwNtISmiOTxS2RGJe9fF50wws1bR0SHqQcx5DD5vZW8gE7ucrG6ld+BNfJgeRQAjoaBoPxGNY3Ycrk37cM2NF2/mGGjwF0gmJF/6tp8ZNSZN0yJO1gsdcyZzIl1DElsqu6vxmYeIxMaXkERPlVfOK6sdcLzPBA+8eJE19y1QwlCsmihCpd4+t1FHFtdv2x5u/lWdLHWcQbFksT8FMmfhlW40vZbxvVEtagjFqN8XOBjOe1pvnXxYJxQWNr72MGHccArcP60CDLKLGrnTrx4lU=
