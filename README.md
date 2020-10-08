@@ -22,7 +22,7 @@ $ dullahan help
 Output cookie and stream map to stdout as JSON format.
 
 ```bash
-$ dullahan session -e EMAIL -p PASSWORD -f FILE_ID [--headless]
+$ dullahan session -e EMAIL -p PASSWORD -f FILE_ID
 {"cookie":{"name":"DRIVE_STREAM","value":"xxx","domain":".drive.google.com","hostOnly":false,"path":"/","secure":true,"httpOnly":true,"session":true},"
 stream_map":{"18":"https://..."}
 ```
@@ -30,7 +30,29 @@ stream_map":{"18":"https://..."}
 **Download the encoded video**
 
 ```bash
-$ dullahan download -e EMAIL -p PASSWORD -f FILE_ID [-o OUTFILE] [--headless]
+$ dullahan download -e EMAIL -p PASSWORD -f FILE_ID -o OUTFILE
+```
+
+**Attach to an existing browser**
+
+Start Google Chrome with the remote-debugging-port option.
+
+```bash
+$ google-chrome --remote-debugging-port=9222 --user-data-dir=/tmp
+```
+
+Start dullahan with the remote-debugging-port option, too.
+
+```bash
+$ dullahan download -e EMAIL -p PASSWORD -f FILE_ID -o OUTFILE --remote-debugging-port=9222
+```
+
+**Skip sign-in**
+
+You can skip sign-in to Google account when you attach to an existing browser that has the session.
+
+```bash
+$ dullahan download -f FILE_ID -o OUTFILE --remote-debugging-port=9222 --skip-signin
 ```
 
 ## License
